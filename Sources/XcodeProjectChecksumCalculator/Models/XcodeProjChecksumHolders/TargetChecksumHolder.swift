@@ -73,7 +73,7 @@ class TargetChecksumHolder<ChecksumType: Checksum>: BaseChecksumHolder<ChecksumT
         var checksums = try children.values
             .sorted()
             .map { try $0.obtainChecksum() }
-        checksums.append(try checksumProducer.checksum(string: name))
+        //checksums.append(try checksumProducer.checksum(string: name))
         return try checksums.aggregate()
     }
     

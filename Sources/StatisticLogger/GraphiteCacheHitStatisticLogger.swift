@@ -72,6 +72,7 @@ public final class GraphiteCacheHitStatisticLogger: CacheHitStatisticLogger {
     }
     
     private func fullMetricKey(for params: XcodeBuildEnvironmentParameters) -> [String] {
+        let swiftVersion = params.swiftVersion.split(separator: ".").map { String($0) }
         return rootKey +
             [
                 "v\(version)",
@@ -84,7 +85,7 @@ public final class GraphiteCacheHitStatisticLogger: CacheHitStatisticLogger {
                 MetricKeyParts.platformNameKey,
                 params.platformName,
                 MetricKeyParts.swiftVersionKey
-            ] + params.swiftVersion.split(separator: ".").map { String($0) } +
+            ] + swiftVersion +
             [
                 MetricKeyParts.configurationKey,
                 params.configuration,
